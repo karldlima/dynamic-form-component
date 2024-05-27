@@ -1,13 +1,14 @@
-import { SignUp } from "./components/Forms";
+import { FormWrapper } from "./components/Forms";
 
+import { formInputs } from "./config/signup";
 import "./App.css";
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <main>
-      <SignUp />
+      <FormWrapper inputs={formInputs} />
     </main>
   );
-}
+};
 
 export default App;
