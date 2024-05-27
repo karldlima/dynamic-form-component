@@ -37,14 +37,16 @@ export const Form = <T extends object, V extends any[]>({
   return (
     <div className="form-container">
       {formSubmitted ? (
-        <div>
+        <>
           <h2>Signed up successfully!</h2>
-          <span>{JSON.stringify(submittedData, null, 2)}</span>
-        </div>
+          <div className="results-container">
+            <span>{JSON.stringify(submittedData, null, 2)}</span>
+          </div>
+        </>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
           {inputs.map((input, i) => {
-            const { type, label, options } = input ?? {};
+            const { type, label, options, halfWidth } = input ?? {};
             const Input: () => JSX.Element = inputComponents[type];
             return (
               <Input
@@ -53,6 +55,7 @@ export const Form = <T extends object, V extends any[]>({
                 defaultValue={defaultValues[type]}
                 {...{ label }}
                 {...{ options }}
+                {...{ halfWidth }}
                 {...register(type)}
               />
             );
@@ -61,7 +64,7 @@ export const Form = <T extends object, V extends any[]>({
             type="submit"
             variant="contained"
             color="primary"
-            sx={{ maxWidth: "fit-content" }}
+            sx={{ maxWidth: "fit-content", marginTop: "20px" }}
           >
             Submit
           </Button>

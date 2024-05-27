@@ -19,3 +19,18 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.input-full {
+  width: 100%;
+}
+
+.input-half {
+  width: 100%;
+}
+
+@media (min-width: 968px) {
+  .input-half {
+    width: max(180px, 40%);
+    align-self: center;
+  }
+}

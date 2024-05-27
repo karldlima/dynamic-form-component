@@ -82,10 +82,12 @@ export const SignUpForm = (): JSX.Element => {
   return (
     <div>
       {formSubmitted ? (
-        <div>
+        <>
           <h2>Signed up successfully!</h2>
-          <span>{JSON.stringify(submittedData, null, 2)}</span>
-        </div>
+          <div>
+            <span>{JSON.stringify(submittedData, null, 2)}</span>
+          </div>
+        </>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField

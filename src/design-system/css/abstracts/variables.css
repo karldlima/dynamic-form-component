@@ -3,9 +3,7 @@
   --colour-button-hover: #5a72d3;
   --colour-button-active: #344ba8;
 
-  --colour-primary-bg: #f1f1f1;
+  --colour-primary-bg: #e0e0e0;
+  --colour-secondary-bg: #f1f1f1;
   --colour-primary-text: #141b38de;
-  --colour-white: #fff;
-  --colour-grey: #ccc;
-  --colour-error: #c94343;
 }

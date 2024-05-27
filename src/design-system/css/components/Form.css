@@ -1,0 +1,18 @@
+.form-container {
+  padding: 30px;
+  background-color: var(--colour-secondary-bg);
+  max-width: 600px;
+  height: calc(100vh - 60px);
+}
+
+.results-container {
+  max-width: 600px;
+  padding: 40px;
+}
+
+@media (min-width: 968px) {
+  .form-container {
+    padding: 50px;
+    height: fit-content;
+  }
+}
