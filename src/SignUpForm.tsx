@@ -7,7 +7,6 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
-  FormGroup,
   FormHelperText,
   InputLabel,
   MenuItem,
@@ -15,7 +14,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import { australianStates } from "../../data";
+import { australianStates } from "./data";
 
 const formSchema = z.object({
   name: z
@@ -61,7 +60,7 @@ const defaultValues: Partial<SignUpFormValues> = {
   tnc: false,
 };
 
-export function SignUp() {
+export const SignUpForm = (): JSX.Element => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [submittedData, setSubmittedData] = useState(defaultValues);
 
@@ -78,7 +77,6 @@ export function SignUp() {
   const onSubmit = (data: SignUpFormValues): void => {
     setSubmittedData(data);
     setFormSubmitted(true);
-    console.log(data); // TODO: print out
   };
 
   return (
@@ -182,4 +180,4 @@ export function SignUp() {
       )}
     </div>
   );
-}
+};
