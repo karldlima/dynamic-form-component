@@ -44,7 +44,7 @@ export const Form = <T extends object, V extends any[]>({
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
           {inputs.map((input, i) => {
-            const { type, label, options } = input ?? {};
+            const { type, label, options, halfWidth } = input ?? {};
             const Input: () => JSX.Element = inputComponents[type];
             return (
               <Input
@@ -53,6 +53,7 @@ export const Form = <T extends object, V extends any[]>({
                 defaultValue={defaultValues[type]}
                 {...{ label }}
                 {...{ options }}
+                {...{ halfWidth }}
                 {...register(type)}
               />
             );

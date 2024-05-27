@@ -24,6 +24,7 @@ export interface FormInputConfig<T extends InputComponent = InputComponent> {
   validation: ZodTypeAny;
   defaultValue: DefaultValue<T>;
   options?: string[];
+  halfWidth?: boolean;
 }
 
 interface FormWrapperProps {

@@ -56,6 +56,7 @@ export const formInputs: FormInputConfig[] = [
         message: "Postcode must be between 0200 and 9999",
       }),
     defaultValue: "",
+    halfWidth: true,
   },
   {
     type: "state",
@@ -63,6 +64,7 @@ export const formInputs: FormInputConfig[] = [
     validation: z.string().min(1, "State is required"),
     defaultValue: "",
     options: australianStates,
+    halfWidth: true,
   },
   {
     type: "tnc",
