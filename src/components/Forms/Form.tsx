@@ -1,7 +1,8 @@
-import { useState, Component } from "react";
+import { useState } from "react";
 import { DefaultValues, useForm } from "react-hook-form";
 import { ZodTypeAny } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@mui/material";
 
 import { inputComponents } from ".";
 
@@ -22,8 +23,7 @@ export const Form = <T extends object, V extends any[]>({
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors, touchedFields },
+    formState: { errors },
   } = useForm<T>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues as DefaultValues<T>,
@@ -34,8 +34,6 @@ export const Form = <T extends object, V extends any[]>({
     setFormSubmitted(true);
   };
 
-  console.log("inputs: ", inputs);
-
   return (
     <div>
       {formSubmitted ? (
@@ -45,10 +43,28 @@ export const Form = <T extends object, V extends any[]>({
         </div>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
-          {inputs.map(({ type, ...rest }, i) => {
+          {inputs.map((input, i) => {
+            const { type, label, options } = input ?? {};
             const Input: () => JSX.Element = inputComponents[type];
-            return <Input key={i} {...rest} />;
+            return (
+              <Input
+                key={i}
+                {...register(type)}
+                error={errors[type]}
+                defaultValue={defaultValues[type]}
+                {...{ label }}
+                {...{ options }}
+              />
+            );
           })}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ maxWidth: "fit-content" }}
+          >
+            Submit
+          </Button>
         </form>
       )}
     </div>

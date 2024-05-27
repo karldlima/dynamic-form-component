@@ -1,6 +1,6 @@
 import { z, ZodTypeAny } from "zod";
 
-import { Checkbox, Form, Select, TextInput } from ".";
+import { Checkbox, Form, SelectInput, TextInput } from ".";
 
 export const inputComponents: { [key: string]: () => JSX.Element } = {
   name: TextInput,
@@ -8,7 +8,7 @@ export const inputComponents: { [key: string]: () => JSX.Element } = {
   phone: TextInput,
   address: TextInput,
   postcode: TextInput,
-  state: Select,
+  state: SelectInput,
   tnc: Checkbox,
 };
 
@@ -23,6 +23,7 @@ export interface FormInputConfig<T extends InputComponent = InputComponent> {
   label: string;
   validation: ZodTypeAny;
   defaultValue: DefaultValue<T>;
+  options?: string[];
 }
 
 interface FormWrapperProps {

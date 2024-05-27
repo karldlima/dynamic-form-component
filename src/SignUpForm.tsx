@@ -135,7 +135,7 @@ export const SignUpForm = (): JSX.Element => {
               sx={{ minWidth: 300 }}
             />
             <FormControl margin="normal" error={!!errors.state}>
-              <InputLabel>State</InputLabel>
+              <InputLabel>State *</InputLabel>
               <Select
                 label="State *"
                 {...register("state")}
