@@ -1,5 +1,5 @@
 This repository contains the source code for a personal project. It is built using React + TypeScript,
-bootstrapped with Vite[SWC]
+bootstrapped with Vite[SWC]. It uses Material UI component library, react-hook-form for the form toolchain and zod for form validation.
 
 ## Getting Started
 
@@ -22,3 +22,7 @@ We follow a development branch naming convention: `<work type>/<issue-number>-<s
 2. Use dashes - to separate words.
 3. Include related issue number (if any).
 4. Describe the topic using two or three words.
+
+### Styling
+
+This repository uses a mix of css and Emotion (Material UI sx), however this should be geared toward one or the other.

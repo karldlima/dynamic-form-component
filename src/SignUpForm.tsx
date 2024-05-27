@@ -50,6 +50,12 @@ const formSchema = z.object({
 
 type SignUpFormValues = z.infer<typeof formSchema>;
 
+/*
+  This is a functional component that renders a sign up form
+  with a hardcoded schema and default values, I've kept this
+  component in to show the working example. The reusable form
+  component is FormWrapper.tsx
+*/
 const defaultValues: Partial<SignUpFormValues> = {
   name: "",
   email: "",
@@ -67,8 +73,7 @@ export const SignUpForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors, touchedFields },
+    formState: { errors },
   } = useForm<SignUpFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -85,7 +90,7 @@ export const SignUpForm = (): JSX.Element => {
         <>
           <h2>Signed up successfully!</h2>
           <div>
-            <span>{JSON.stringify(submittedData, null, 2)}</span>
+            <pre>{JSON.stringify(submittedData, null, 2)}</pre>
           </div>
         </>
       ) : (

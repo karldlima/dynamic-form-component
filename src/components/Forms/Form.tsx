@@ -39,8 +39,8 @@ export const Form = <T extends object, V extends any[]>({
       {formSubmitted ? (
         <>
           <h2>Signed up successfully!</h2>
-          <div className="results-container">
-            <span>{JSON.stringify(submittedData, null, 2)}</span>
+          <div>
+            <pre>{JSON.stringify(submittedData, null, 2)}</pre>
           </div>
         </>
       ) : (
