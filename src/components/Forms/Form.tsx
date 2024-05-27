@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DefaultValues, useForm } from "react-hook-form";
-import { ZodTypeAny } from "zod";
+import { ZodSchema } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";
 
@@ -9,7 +9,7 @@ import { inputComponents } from ".";
 interface FormProps<T, V> {
   defaultValues: T;
   inputs: V;
-  formSchema: ZodTypeAny;
+  formSchema: ZodSchema;
 }
 
 export const Form = <T extends object, V extends any[]>({
@@ -39,15 +39,15 @@ export const Form = <T extends object, V extends any[]>({
       {formSubmitted ? (
         <>
           <h2>Signed up successfully!</h2>
-          <div className="results-container">
-            <span>{JSON.stringify(submittedData, null, 2)}</span>
+          <div>
+            <pre>{JSON.stringify(submittedData, null, 2)}</pre>
           </div>
         </>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
           {inputs.map((input, i) => {
             const { type, label, options, halfWidth } = input ?? {};
-            const Input: () => JSX.Element = inputComponents[type];
+            const Input = inputComponents[type];
             return (
               <Input
                 key={i}

@@ -2,7 +2,7 @@ import { z, ZodTypeAny } from "zod";
 
 import { CheckboxInput, Form, SelectInput, TextInput } from ".";
 
-export const inputComponents: { [key: string]: () => JSX.Element } = {
+export const inputComponents = {
   name: TextInput,
   email: TextInput,
   phone: TextInput,
