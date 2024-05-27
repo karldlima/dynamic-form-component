@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { FormInputConfig } from "../components/Forms";
+import { australianStates } from "../data";
 
 export const formInputs: FormInputConfig[] = [
   {
@@ -61,6 +62,7 @@ export const formInputs: FormInputConfig[] = [
     label: "State *",
     validation: z.string().min(1, "State is required"),
     defaultValue: "",
+    options: australianStates,
   },
   {
     type: "tnc",
