@@ -35,7 +35,7 @@ export const Form = <T extends object, V extends any[]>({
   };
 
   return (
-    <div>
+    <div className="form-container">
       {formSubmitted ? (
         <div>
           <h2>Signed up successfully!</h2>
@@ -49,11 +49,11 @@ export const Form = <T extends object, V extends any[]>({
             return (
               <Input
                 key={i}
-                {...register(type)}
                 error={errors[type]}
                 defaultValue={defaultValues[type]}
                 {...{ label }}
                 {...{ options }}
+                {...register(type)}
               />
             );
           })}

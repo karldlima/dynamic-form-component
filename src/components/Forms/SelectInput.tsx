@@ -25,8 +25,8 @@ export const SelectInput = ({
     <FormControl margin="normal" error={!!error}>
       <InputLabel>{label}</InputLabel>
       <Select
-        {...{ label }}
         {...props}
+        {...{ label }}
         {...{ defaultValue }}
         sx={{ minWidth: 300 }}
       >

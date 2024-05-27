@@ -1,6 +1,6 @@
 import { z, ZodTypeAny } from "zod";
 
-import { Checkbox, Form, SelectInput, TextInput } from ".";
+import { CheckboxInput, Form, SelectInput, TextInput } from ".";
 
 export const inputComponents: { [key: string]: () => JSX.Element } = {
   name: TextInput,
@@ -9,7 +9,7 @@ export const inputComponents: { [key: string]: () => JSX.Element } = {
   address: TextInput,
   postcode: TextInput,
   state: SelectInput,
-  tnc: Checkbox,
+  tnc: CheckboxInput,
 };
 
 export type InputComponent = keyof typeof inputComponents;
