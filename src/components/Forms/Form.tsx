@@ -4,19 +4,19 @@ import { ZodSchema } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";
 
-import { inputComponents } from ".";
+import { FormInputConfig, inputComponents } from ".";
 
-interface FormProps<T, V> {
+interface FormProps<T> {
   defaultValues: T;
-  inputs: V;
+  inputs: FormInputConfig[];
   formSchema: ZodSchema;
 }
 
-export const Form = <T extends object, V extends any[]>({
+export const Form = <T extends object>({
   defaultValues,
   inputs,
   formSchema,
-}: FormProps<T, V>) => {
+}: FormProps<T>) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [submittedData, setSubmittedData] = useState<T>(defaultValues);
 

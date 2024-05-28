@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 import {
   Checkbox,
@@ -13,14 +14,8 @@ interface CheckboxInputProps {
   halfWidth?: boolean;
 }
 
-export const CheckboxInput = ({
-  defaultValue,
-  label,
-  error,
-  halfWidth,
-  ...props
-}: CheckboxInputProps): JSX.Element => {
-  return (
+export const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>(
+  ({ defaultValue, label, error, halfWidth, ...props }, ref): JSX.Element => (
     <FormControl
       error={!!error}
       component="fieldset"
@@ -32,10 +27,12 @@ export const CheckboxInput = ({
       variant="standard"
     >
       <FormControlLabel
-        control={<Checkbox {...props} defaultChecked={defaultValue} />}
+        control={
+          <Checkbox {...props} inputRef={ref} defaultChecked={defaultValue} />
+        }
         {...{ label }}
       />
       <FormHelperText>{error?.message}</FormHelperText>
     </FormControl>
-  );
-};
+  )
+);

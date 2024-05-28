@@ -35,15 +35,7 @@ export const formInputs: FormInputConfig[] = [
   {
     type: "address",
     label: "Address",
-    validation: z
-      .string()
-      .min(6, {
-        message: "Address must be at least 6 characters.",
-      })
-      .max(80, {
-        message: "Address must not be longer than 80 characters.",
-      })
-      .optional(),
+    validation: z.string().optional(),
     defaultValue: "",
   },
   {

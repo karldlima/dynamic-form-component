@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 import { TextField } from "@mui/material";
 
@@ -8,15 +9,10 @@ interface TextInputProps {
   halfWidth?: boolean;
 }
 
-export const TextInput = ({
-  defaultValue,
-  label,
-  error,
-  halfWidth,
-  ...props
-}: TextInputProps): JSX.Element => {
-  return (
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ defaultValue, label, error, halfWidth, ...props }, ref): JSX.Element => (
     <TextField
+      inputRef={ref}
       {...{ label }}
       sx={{
         marginRight: { xs: "0", md: "5px", lg: "0" },
@@ -29,5 +25,5 @@ export const TextInput = ({
       helperText={error?.message}
       {...props}
     />
-  );
-};
+  )
+);
