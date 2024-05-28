@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 import {
   FormControl,
@@ -15,15 +16,11 @@ interface SelectInputProps {
   halfWidth?: boolean;
 }
 
-export const SelectInput = ({
-  options,
-  defaultValue,
-  label,
-  error,
-  halfWidth,
-  ...props
-}: SelectInputProps): JSX.Element => {
-  return (
+export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
+  (
+    { options, defaultValue, label, error, halfWidth, ...props },
+    ref
+  ): JSX.Element => (
     <FormControl
       margin="normal"
       error={!!error}
@@ -34,7 +31,7 @@ export const SelectInput = ({
       className={`${!halfWidth ? "input-full" : "input-half"}`}
     >
       <InputLabel>{label}</InputLabel>
-      <Select {...props} {...{ label }} {...{ defaultValue }}>
+      <Select inputRef={ref} {...props} {...{ label }} {...{ defaultValue }}>
         {options?.map((option, index) => (
           <MenuItem key={index} value={option}>
             {option}
@@ -43,5 +40,5 @@ export const SelectInput = ({
       </Select>
       <FormHelperText>{error?.message}</FormHelperText>
     </FormControl>
-  );
-};
+  )
+);
