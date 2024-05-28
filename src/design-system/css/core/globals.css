@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color: var(--colour-primary-text);
-  background-color: var(--colour-primary-bg);
+  background-color: var(--colour-secondary-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,6 +29,10 @@ body {
 }
 
 @media (min-width: 968px) {
+  :root {
+    background-color: var(--colour-primary-bg);
+  }
+
   .input-half {
     width: max(180px, 40%);
     align-self: center;
