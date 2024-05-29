@@ -14,10 +14,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     <TextField
       inputRef={ref}
       {...{ label }}
-      sx={{
-        marginRight: { xs: "0", md: "5px", lg: "0" },
-        marginLeft: { xs: "0", md: "5px", lg: "0" },
-      }}
       className={`${!halfWidth ? "input-full" : "input-half"}`}
       margin="normal"
       {...{ defaultValue }}
