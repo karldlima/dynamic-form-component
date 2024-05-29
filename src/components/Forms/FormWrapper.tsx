@@ -14,28 +14,33 @@ export const inputComponents = {
 
 export type InputComponent = keyof typeof inputComponents;
 
-type DefaultValue<T extends InputComponent> = T extends "tnc"
-  ? boolean
-  : string;
+type DefaultValue<T> = T extends "tnc" ? boolean : string;
 
-export interface FormInputConfig<T extends InputComponent = InputComponent> {
-  type: T;
+export interface FormInputConfig {
+  type: InputComponent;
   label: string;
   validation: ZodTypeAny;
-  defaultValue: DefaultValue<T>;
+  defaultValue: DefaultValue<InputComponent>;
   options?: string[];
   halfWidth?: boolean;
 }
+
+type SchemaObject = {
+  [key in InputComponent]: ZodTypeAny;
+};
 
 interface FormWrapperProps {
   inputs: FormInputConfig[];
 }
 
 export const FormWrapper = ({ inputs }: FormWrapperProps): JSX.Element => {
-  const schemaObject = inputs.reduce((acc, input) => {
-    acc[input.type] = input.validation;
-    return acc;
-  }, {} as { [key: string]: ZodTypeAny });
+  const schemaObject: SchemaObject = inputs.reduce(
+    (acc, { type, validation }) => {
+      acc[type] = validation;
+      return acc;
+    },
+    {} as SchemaObject
+  );
 
   const formSchema = z.object(schemaObject);
   type FormValues = z.infer<typeof formSchema>;
