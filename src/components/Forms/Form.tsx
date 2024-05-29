@@ -49,15 +49,16 @@ export const Form = <T extends object>({
             const { type, label, options, halfWidth } = input ?? {};
             const Input = inputComponents[type];
             return (
-              <Input
-                key={i}
-                error={errors[type]}
-                defaultValue={defaultValues[type]}
-                {...{ label }}
-                {...{ options }}
-                {...{ halfWidth }}
-                {...register(type)}
-              />
+              <div key={i}>
+                <Input
+                  error={errors[type]}
+                  defaultValue={defaultValues[type]}
+                  {...{ label }}
+                  {...{ options }}
+                  {...{ halfWidth }}
+                  {...register(type)}
+                />
+              </div>
             );
           })}
           <Button type="submit" variant="contained" color="primary">
