@@ -60,12 +60,7 @@ export const Form = <T extends object>({
               />
             );
           })}
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ maxWidth: "fit-content", marginTop: "20px" }}
-          >
+          <Button type="submit" variant="contained" color="primary">
             Submit
           </Button>
         </form>

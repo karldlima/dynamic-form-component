@@ -24,10 +24,6 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
     <FormControl
       margin="normal"
       error={!!error}
-      sx={{
-        marginRight: { xs: "0", md: "5px", lg: "0" },
-        marginLeft: { xs: "0", md: "5px", lg: "0" },
-      }}
       className={`${!halfWidth ? "input-full" : "input-half"}`}
     >
       <InputLabel>{label}</InputLabel>

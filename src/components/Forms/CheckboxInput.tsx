@@ -19,10 +19,6 @@ export const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>(
     <FormControl
       error={!!error}
       component="fieldset"
-      sx={{
-        marginRight: { xs: "0", md: "5px", lg: "0" },
-        marginLeft: { xs: "0", md: "5px", lg: "0" },
-      }}
       className={`${!halfWidth ? "input-full" : "input-half"}`}
       variant="standard"
     >

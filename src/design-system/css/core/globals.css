@@ -20,12 +20,10 @@ body {
   min-height: 100vh;
 }
 
-.input-full {
-  width: 100%;
-}
-
+.input-full,
 .input-half {
-  width: 100%;
+  box-sizing: border-box;
+  flex: 1 1 100%;
 }
 
 @media (min-width: 968px) {
@@ -34,7 +32,6 @@ body {
   }
 
   .input-half {
-    width: max(180px, 40%);
-    align-self: center;
+    flex: 1 1 calc(50% - 5px);
   }
 }
