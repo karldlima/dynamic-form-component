@@ -1,6 +1,7 @@
 import { z, ZodTypeAny } from "zod";
 
-import { CheckboxInput, Form, SelectInput, TextInput } from ".";
+import { Form } from ".";
+import { CheckboxInput, SelectInput, TextInput } from "./Inputs";
 
 export const inputComponents = {
   name: TextInput,
