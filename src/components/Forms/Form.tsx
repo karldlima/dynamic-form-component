@@ -1,10 +1,34 @@
+/** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import { DefaultValues, useForm } from "react-hook-form";
 import { ZodSchema } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@mui/material";
+import { Button, Theme } from "@mui/material";
+import { css } from "@emotion/react";
 
 import { FormInputConfig, inputComponents } from ".";
+
+const formContainerCss = {
+  self: (theme: Theme) =>
+    css({
+      padding: "30px",
+      backgroundColor: theme.palette.secondary.light,
+      maxWidth: "600px",
+      height: "calc(100vh - 60px)",
+      [theme.breakpoints.up("md")]: {
+        padding: "50px",
+        height: "fit-content",
+      },
+    }),
+  button: css({
+    marginTop: "20px",
+  }),
+  form: css({
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "0 10px",
+  }),
+};
 
 interface FormProps<T> {
   defaultValues: T;
@@ -35,7 +59,7 @@ export const Form = <T extends object>({
   };
 
   return (
-    <div className="form-container">
+    <div css={(theme) => formContainerCss.self(theme as Theme)}>
       {formSubmitted ? (
         <>
           <h2>Signed up successfully!</h2>
@@ -44,7 +68,7 @@ export const Form = <T extends object>({
           </div>
         </>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form css={formContainerCss.form} onSubmit={handleSubmit(onSubmit)}>
           {inputs.map((input, i) => {
             const { type, label, options, halfWidth } = input ?? {};
             const Input = inputComponents[type];
@@ -60,7 +84,12 @@ export const Form = <T extends object>({
               />
             );
           })}
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            css={formContainerCss.button}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
             Submit
           </Button>
         </form>
