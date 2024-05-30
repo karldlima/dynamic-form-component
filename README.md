@@ -25,4 +25,4 @@ We follow a development branch naming convention: `<work type>/<issue-number>-<s
 
 ### Styling
 
-This repository uses a mix of css and Emotion (Material UI sx), however this should be geared toward one or the other in future refactors.
+This repository uses Emotion, closely basing a styleguide from mui and customizing as needed.

@@ -1,6 +1,9 @@
+/** @jsxImportSource @emotion/react */
 import { forwardRef } from "react";
 import { FieldError } from "react-hook-form";
-import { TextField } from "@mui/material";
+import { TextField, Theme } from "@mui/material";
+
+import { formInputCss } from ".";
 
 interface TextInputProps {
   defaultValue: string;
@@ -14,7 +17,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     <TextField
       inputRef={ref}
       {...{ label }}
-      className={`${!halfWidth ? "input-full" : "input-half"}`}
+      css={(theme) => [
+        formInputCss.self,
+        halfWidth && formInputCss.halfWidth(theme as Theme),
+      ]}
       margin="normal"
       {...{ defaultValue }}
       error={!!error}

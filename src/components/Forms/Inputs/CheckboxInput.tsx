@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 import {
@@ -5,7 +6,10 @@ import {
   FormControl,
   FormControlLabel,
   FormHelperText,
+  Theme,
 } from "@mui/material";
+
+import { formInputCss } from ".";
 
 interface CheckboxInputProps {
   defaultValue: boolean;
@@ -19,7 +23,10 @@ export const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>(
     <FormControl
       error={!!error}
       component="fieldset"
-      className={`${!halfWidth ? "input-full" : "input-half"}`}
+      css={(theme) => [
+        formInputCss.self,
+        halfWidth && formInputCss.halfWidth(theme as Theme),
+      ]}
       variant="standard"
     >
       <FormControlLabel

@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 import {
@@ -6,7 +7,10 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Theme,
 } from "@mui/material";
+
+import { formInputCss } from ".";
 
 interface SelectInputProps {
   options: string[];
@@ -24,7 +28,10 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
     <FormControl
       margin="normal"
       error={!!error}
-      className={`${!halfWidth ? "input-full" : "input-half"}`}
+      css={(theme) => [
+        formInputCss.self,
+        halfWidth && formInputCss.halfWidth(theme as Theme),
+      ]}
     >
       <InputLabel>{label}</InputLabel>
       <Select inputRef={ref} {...props} {...{ label }} {...{ defaultValue }}>
