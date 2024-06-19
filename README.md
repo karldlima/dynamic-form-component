@@ -1,4 +1,4 @@
-This repository contains the source code for a personal project. It is built using React + TypeScript,
+This repository contains the source code for a personal project: a dynamic form component that generates a form with validation based on an array of form input configurations. It is built using React + TypeScript,
 bootstrapped with Vite[SWC]. It uses Material UI component library, react-hook-form for the form toolchain and zod for form validation.
 
 ## Getting Started
